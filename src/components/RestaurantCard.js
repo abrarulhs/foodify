@@ -8,7 +8,11 @@ const RestaurantCard = (props) => {
         avgRating,
         cuisines,
         costForTwo,
-        deliveryTime, } = resData.info
+        isOpen,
+        deliveryTime, } = resData?.info
+
+        console.log(resData.info);
+        
   return (
      <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
        <img
@@ -24,5 +28,20 @@ const RestaurantCard = (props) => {
      </div>
   )
 }
+
+
+// HOC
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return  (props) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <RestaurantCard {...props}/>
+      </div>
+    )
+  }
+}
+
 
 export default RestaurantCard
